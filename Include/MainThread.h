@@ -8,7 +8,7 @@ class MainThread : public Server
         MainThread(int port):Server(port)
         {
             init();   
-            //wk.ProcRun();
+            wk.ProcRun();
         }
 
         ~MainThread()
@@ -26,7 +26,7 @@ class MainThread : public Server
 
         void stop()
         {
-           // wk.stop();
+            wk.stop();
             t1.join();
         }
         void onMessage(int socket)
