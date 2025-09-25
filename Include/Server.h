@@ -75,7 +75,7 @@ class Server
                     std::vector<pollfd>::iterator end = poll_sets.end();
                     for (it = poll_sets.begin(); it != end; it++)
                     {
-                        std::cout << "Running......." << std::endl;
+                        //std::cout << "Running......." << std::endl;
                         if (it->revents & POLLIN)
                         {   
                             if (it->fd == m_serverSocket)

@@ -8,7 +8,7 @@ class MainThread : public Server
         MainThread(int port):Server(port)
         {
             init();   
-            wk.ProcRun();
+            //wk.ProcRun();
         }
 
         ~MainThread()
@@ -20,17 +20,25 @@ class MainThread : public Server
         {
             std::thread t(&MainThread::run , this);
             t1 = std::move(t);
+            //t.detach();
 
         }
 
         void stop()
         {
-            wk.stop();
+           // wk.stop();
             t1.join();
         }
         void onMessage(int socket)
         {
-            std::cout << "From Derived" << std::endl;
+            
+            char buffer[1024] = {0};
+            int valread = read(socket, buffer, 1024);
+            if (valread > 0) 
+            {
+                std::cout << "Received: " << buffer << std::endl;
+            
+            }
         }
         
     public:
