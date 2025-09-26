@@ -11,14 +11,20 @@ class ThreadA : public MainThread
         ThreadA(int port , WorkerThread* wk):MainThread(port)
         {   
             m_wk = wk;
-            m_wk->insert(10);
+            
 
         }
         
-        void atInsert() override
+        void atInsert(int item) override 
         {
-            std::cout << "Received By A" << std::endl;
-            
+            std::cout << "ThreadA [" << std::this_thread::get_id() << "] received: " << item << std::endl;
+            sendToWorker(++item);
+        }
+        
+
+        void sendToWorker(int value) 
+        {
+            if (m_wk) m_wk->insert(value);
         }
     public:
         WorkerThread* m_wk;

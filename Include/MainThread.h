@@ -16,11 +16,20 @@ class MainThread : public Server , public TransferQueue
         {
             
         }
+        void run1(int n)
+        {
+            
+            if(vec1.size() >= 1)
+            {
+                //atInsert(n);
+            }
+            n++;
 
+
+        }
         void ProcRun() 
         {
-            //std::thread t(&MainThread::run , this);
-            //t1 = std::move(t);
+            
             //t.detach();
 
         }
@@ -28,7 +37,7 @@ class MainThread : public Server , public TransferQueue
         void stop()
         {
            
-            //t1.join();
+            
         }
         void onMessage(int socket)
         {

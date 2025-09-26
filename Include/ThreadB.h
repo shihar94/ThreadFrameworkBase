@@ -12,16 +12,16 @@ class ThreadB : public WorkerThread
 
         }
 
-        void atInsert() override
+        void atInsert(int item) override 
         {
-            std::cout << "Received By B" << std::endl;
-            //peer->insert(11);
+            std::cout << "ThreadB [" << std::this_thread::get_id() << "] received: " << item << std::endl;
+            peer->insert(++item);
         }
 
         void setPeer(MainThread* p)
         {
             peer = p;
-            peer->insert(11);
+            //peer->insert(11);
         }
 
     public:
