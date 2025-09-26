@@ -16,7 +16,7 @@ class TransferQueue
         void insert(int n)
         {
             std::cout << "Inserted item: " << n << std::endl;
-            vec1.push_back(n);
+            //vec1.push_back(n);
             atInsert();
         }
         virtual void atInsert()

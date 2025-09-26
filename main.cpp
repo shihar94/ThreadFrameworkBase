@@ -6,9 +6,10 @@
 
 int main()
 {
-    
-    MainThread main1(8000);
-    main1.ProcRun();
-    main1.stop();
+    ThreadB* mainB = new ThreadB();
+    ThreadA* mainA = new ThreadA(8000 , mainB);
+    mainB->setPeer(mainA);
+    mainA->ProcRun();
+    mainA->stop();
     return 0;
 }

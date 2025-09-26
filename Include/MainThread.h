@@ -2,13 +2,14 @@
 #include <thread>
 #include <Server.h>
 #include <WorkerThread.h>
-class MainThread : public Server
+
+class MainThread : public Server , public TransferQueue
 {
     public: 
         MainThread(int port):Server(port)
         {
             init();   
-            wk.ProcRun();
+            
         }
 
         ~MainThread()
@@ -16,18 +17,18 @@ class MainThread : public Server
             
         }
 
-        void ProcRun()
+        void ProcRun() 
         {
-            std::thread t(&MainThread::run , this);
-            t1 = std::move(t);
+            //std::thread t(&MainThread::run , this);
+            //t1 = std::move(t);
             //t.detach();
 
         }
 
         void stop()
         {
-            wk.stop();
-            t1.join();
+           
+            //t1.join();
         }
         void onMessage(int socket)
         {
@@ -43,5 +44,5 @@ class MainThread : public Server
         
     public:
         std::thread t1;
-        WorkerThread wk;
+        
 };

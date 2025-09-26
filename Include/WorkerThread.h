@@ -3,7 +3,7 @@
 #include <thread>
 #include <Main.h>
 
-class WorkerThread : public Main
+class WorkerThread : public Main, public TransferQueue
 {   
     public:
         WorkerThread()
@@ -18,13 +18,13 @@ class WorkerThread : public Main
 
         void ProcRun()
         {
-            std::thread t1(&WorkerThread::run , this);
-            t = std::move(t1);
+            //std::thread t1(&WorkerThread::run , this);
+            //t = std::move(t1);
         }
 
         void stop()
         {
-            t.join();
+            //t.join();
         }
 
         public:
